@@ -16,7 +16,7 @@ public class VEHICULOSDAOimpl implements VehiculosDAO {
 
     @Override
     public void crear(Vehiculos v) {
-        String sql = "INSERT INTO vehiculos (clienteid, marca, modelo, placa, color, tipo) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO vehiculos (idCliente, marca, modelo, placa, color, tipo) VALUES (?,?,?,?,?,?)";
 
         try (PreparedStatement st = connection.prepareStatement(sql)) {
 
@@ -45,7 +45,7 @@ public class VEHICULOSDAOimpl implements VehiculosDAO {
             if (rs.next()) {
 
                 Vehiculos v = new Vehiculos(
-                        rs.getInt("clienteid"),
+                        rs.getInt("idCliente"),
                         rs.getString("marca"),
                         rs.getString("modelo"),
                         rs.getString("placa"),
@@ -65,7 +65,7 @@ public class VEHICULOSDAOimpl implements VehiculosDAO {
 
     @Override
     public void actualizar(Vehiculos v) {
-        String sql = "UPDATE vehiculos SET clienteid=?, marca=?, modelo=?, placa=?, color=?, tipo=? WHERE vehiculoid=?";
+        String sql = "UPDATE vehiculos SET idCliente=?, marca=?, modelo=?, placa=?, color=?, tipo=? WHERE vehiculoid=?";
 
         try (PreparedStatement st = connection.prepareStatement(sql)) {
 
@@ -111,7 +111,7 @@ public class VEHICULOSDAOimpl implements VehiculosDAO {
             while (rs.next()) {
 
                 Vehiculos v = new Vehiculos(
-                        rs.getInt("clienteid"),
+                        rs.getInt("idCliente"),
                         rs.getString("marca"),
                         rs.getString("modelo"),
                         rs.getString("placa"),

@@ -29,11 +29,11 @@ public class ClientesDAOimpl implements ClientesDAO {
     }
 
     @Override
-    public Clientes leer(int clienteid) {
-        String sql = "SELECT * FROM Clientes WHERE clienteid = ?";
+    public Clientes leer(int idCliente) {
+        String sql = "SELECT * FROM Clientes WHERE idCliente = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, clienteid);
+            statement.setInt(1, idCliente);
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -46,7 +46,7 @@ public class ClientesDAOimpl implements ClientesDAO {
                         resultSet.getString("direccion")
                 );
 
-                cliente.setCliente_id(resultSet.getInt("clienteid"));
+                cliente.setIdCliente(resultSet.getInt("idCliente"));
                 return cliente;
             }
 
@@ -59,7 +59,7 @@ public class ClientesDAOimpl implements ClientesDAO {
 
     @Override
     public void actualizar(Clientes clientes) {
-        String sql = "UPDATE Clientes SET nombre=?, apellido=?, telefono=?, email=?, direccion=? WHERE clienteid=?";
+        String sql = "UPDATE Clientes SET nombre=?, apellido=?, telefono=?, email=?, direccion=? WHERE idCliente=?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, clientes.getNombre());
@@ -67,7 +67,7 @@ public class ClientesDAOimpl implements ClientesDAO {
             statement.setString(3, clientes.getTelefono());
             statement.setString(4, clientes.getEmail());
             statement.setString(5, clientes.getDireccion());
-            statement.setInt(6, clientes.getCliente_id());
+            statement.setInt(6, clientes.getIdCliente());
 
             statement.executeUpdate();
 
@@ -77,11 +77,11 @@ public class ClientesDAOimpl implements ClientesDAO {
     }
 
     @Override
-    public void eliminar(int clienteid) {
-        String sql = "DELETE FROM Clientes WHERE clienteid=?";
+    public void eliminar(int idCliente) {
+        String sql = "DELETE FROM Clientes WHERE idCliente=?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, clienteid);
+            statement.setInt(1, idCliente);
             statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -106,7 +106,7 @@ public class ClientesDAOimpl implements ClientesDAO {
                         resultSet.getString("direccion")
                 );
 
-                cliente.setCliente_id(resultSet.getInt("clienteid"));
+                cliente.setIdCliente(resultSet.getInt("idCliente"));
                 clientes.add(cliente);
             }
 

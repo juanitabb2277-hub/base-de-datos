@@ -1,7 +1,7 @@
 package org.example.model;
 
 public class Clientes {
-    private int cliente_id;
+    private int idCliente;
     private String nombre;
     private  String apellido;
     private String telefono;
@@ -21,12 +21,12 @@ public class Clientes {
     }
 
 
-    public int getCliente_id() {
-        return cliente_id;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setCliente_id(int cliente_id) {
-        this.cliente_id = cliente_id;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getNombre() {
@@ -72,7 +72,7 @@ public class Clientes {
     @Override
     public String toString() {
         return "--->\n" +
-                "ID="+ cliente_id+'\''+
+                "ID="+ idCliente+'\''+
                 "nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", telefono='" + telefono + '\'' +
